@@ -32,7 +32,7 @@ import org.springframework.validation.annotation.Validated;
 import java.util.*;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/2/28
  **/
 @Validated
@@ -638,6 +638,24 @@ public class DocumentWriteServiceImpl implements DocumentWriteService, Applicati
 		return document;
 	}
 
+
+	@Override
+	public Document updateCaseNo(UpdateCaseNoRequest request) {
+		Document document = this.findById(request.getId());
+		Assert.isTrue(authorizeService.checkPermission(request.getUser(), document, PermissionType.EDIT), "无权限修改文件备注");
+
+		String originalCaseNo = document.getCaseNo();
+
+		Document update = new Document();
+		update.setId(request.getId());
+		update.setCaseNo(request.getCaseNo());
+		update.setUpdatedBy(request.getUser().getId());
+		update.setUpdateDate(new Date());
+		this.documentRepository.update(update);
+		UpdateCaseNoEvent event = new UpdateCaseNoEvent(document, originalCaseNo, request.getUser().getId());
+		this.applicationEventPublisher.publishEvent(event);
+		return document;
+	}
 
 	/**
 	 * 交接子文档

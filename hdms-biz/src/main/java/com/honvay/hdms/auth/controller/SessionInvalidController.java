@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2018-11-25
  **/
 @Slf4j

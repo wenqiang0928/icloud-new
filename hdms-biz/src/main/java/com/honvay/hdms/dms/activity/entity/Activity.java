@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 @Data
 @Builder

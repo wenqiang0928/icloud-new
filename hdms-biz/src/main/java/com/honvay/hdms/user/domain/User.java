@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 @Data
 @TableName("hdms_user")

@@ -9,7 +9,7 @@ import com.honvay.hdms.message.model.MessageDto;
 import java.util.List;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 public interface MessageService extends BaseService<Message, Integer> {
 

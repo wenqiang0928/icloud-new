@@ -35,7 +35,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 @Service
 public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements UserService, ApplicationListener<AbstractAuthenticationEvent> {

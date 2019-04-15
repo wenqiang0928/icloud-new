@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.honvay.hdms.dms.recent.entity.Recent;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/2/25
  **/
 public interface RecentMapper extends BaseMapper<Recent> {

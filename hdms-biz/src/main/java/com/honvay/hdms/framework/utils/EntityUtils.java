@@ -6,7 +6,7 @@ import org.apache.commons.beanutils.PropertyUtils;
 import java.beans.PropertyDescriptor;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 public class EntityUtils {
 

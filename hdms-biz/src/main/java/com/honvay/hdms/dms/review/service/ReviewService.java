@@ -8,7 +8,7 @@ import com.honvay.hdms.framework.support.service.BaseService;
 import java.util.List;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 public interface ReviewService extends BaseService<Review, Integer> {
 

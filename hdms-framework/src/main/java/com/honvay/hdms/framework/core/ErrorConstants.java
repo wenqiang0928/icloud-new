@@ -2,7 +2,7 @@
 package com.honvay.hdms.framework.core;
 
 /**
- * @author LIQIU
+ * @author wxq
  * @date 2018-1-12
  **/
 public class ErrorConstants implements ErrorMessage {

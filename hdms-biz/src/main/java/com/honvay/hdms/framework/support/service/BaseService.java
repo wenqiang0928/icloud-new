@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/2/23
  **/
 public interface BaseService<T, PK extends Serializable> {

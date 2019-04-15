@@ -4,7 +4,7 @@ package com.honvay.hdms.dms.authorize.enums;
 import java.util.stream.Stream;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/2/22
  **/
 public enum OwnerType {

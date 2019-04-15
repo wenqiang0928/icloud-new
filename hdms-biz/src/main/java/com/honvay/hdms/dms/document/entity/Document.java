@@ -10,7 +10,7 @@ import java.util.Date;
 /**
  * Honvay Cloud Object
  *
- * @author LIQIU
+ * @author wxq
  */
 @Data
 @TableName("hdms_document")
@@ -72,5 +72,12 @@ public class Document {
 	private String ext;
 
 	private String description;
+
+	private String caseNo;
+	private String policingNo;
+    private String caseName;
+    private String caseTime;
+    private String caseDesc;
+    private String caseAddr;
 
 }

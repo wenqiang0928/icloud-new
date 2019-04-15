@@ -16,7 +16,7 @@ import org.springframework.util.Assert;
 import java.util.List;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 @Service
 public class FavoriteServiceImpl extends BaseServiceImpl<Favorite, Integer> implements FavoriteService {

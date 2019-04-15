@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2018-11-20
  **/
 public class CaptchaAuthenticationFilter extends GenericFilterBean {

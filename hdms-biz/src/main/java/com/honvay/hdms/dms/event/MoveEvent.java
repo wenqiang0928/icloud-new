@@ -6,7 +6,7 @@ import lombok.Data;
 import org.springframework.context.ApplicationEvent;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/2/24
  **/
 @Data

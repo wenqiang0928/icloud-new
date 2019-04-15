@@ -460,6 +460,16 @@ app.controller('DirectoryCtrl',
                 });
             }
 
+            /**
+             * 修改案件号
+             */
+            $scope.updateCaseNo = function () {
+                console.log("updatecaseNo")
+                $rootScope.updateCaseNo($scope.current, function () {
+                }, function () {
+                });
+            }
+
             $scope.createDirectory = function () {
 
                 Messager.prompt("新建文件夹", "", "").then(function (name) {

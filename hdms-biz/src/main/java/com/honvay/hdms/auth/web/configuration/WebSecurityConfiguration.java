@@ -28,7 +28,7 @@ import org.springframework.security.web.authentication.session.SessionAuthentica
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 @EnableWebSecurity
 @Configuration

@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 @Service
 public class ActivityServiceImpl extends BaseServiceImpl<Activity, Integer> implements ActivityService {

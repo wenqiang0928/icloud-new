@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.function.Consumer;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/3/3
  **/
 public interface Uploader {

@@ -5,7 +5,7 @@ import com.honvay.hdms.auth.core.AuthenticatedUser;
 import lombok.Data;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/3/1
  **/
 @Data

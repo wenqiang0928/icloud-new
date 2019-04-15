@@ -20,7 +20,7 @@ import org.springframework.util.unit.DataSize;
 import javax.servlet.MultipartConfigElement;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/2/23
  **/
 @Configuration

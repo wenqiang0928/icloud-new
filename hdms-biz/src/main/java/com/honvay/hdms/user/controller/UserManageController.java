@@ -20,7 +20,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/3/12
  **/
 @RestController

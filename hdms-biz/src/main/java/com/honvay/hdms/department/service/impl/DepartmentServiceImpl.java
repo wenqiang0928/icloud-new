@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 @Service
 public class DepartmentServiceImpl extends BaseServiceImpl<Department, Integer> implements DepartmentService {

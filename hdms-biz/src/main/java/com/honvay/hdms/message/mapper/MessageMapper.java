@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/3/10
  **/
 public interface MessageMapper extends BaseMapper<Message> {

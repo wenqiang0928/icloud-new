@@ -2,7 +2,7 @@
 package com.honvay.hdms.auth;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2018/12/26
  **/
 public class WebAuthenticationConstant {

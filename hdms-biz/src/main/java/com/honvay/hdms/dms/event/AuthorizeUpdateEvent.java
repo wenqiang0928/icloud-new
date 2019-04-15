@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 import org.springframework.context.ApplicationEvent;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/3/9
  **/
 @EqualsAndHashCode(callSuper = true)

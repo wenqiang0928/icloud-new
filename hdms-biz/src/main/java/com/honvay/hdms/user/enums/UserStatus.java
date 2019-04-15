@@ -4,7 +4,7 @@ package com.honvay.hdms.user.enums;
 /**
  * 用户状态枚举
  *
- * @author LIQIU
+ * @author wxq
  * created on 2018-11-16
  **/
 public enum UserStatus {

@@ -11,7 +11,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 @Service
 public class SettingServiceImpl extends BaseServiceImpl<Setting, Integer> implements SettingService {

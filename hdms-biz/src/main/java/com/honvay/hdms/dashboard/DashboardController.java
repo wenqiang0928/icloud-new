@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 @Controller
 public class DashboardController {

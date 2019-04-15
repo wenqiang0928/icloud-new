@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/2/23
  **/
 @EnableCaching

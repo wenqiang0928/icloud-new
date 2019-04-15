@@ -6,7 +6,7 @@ import com.honvay.hdms.dms.model.dto.DocumentSimpleDto;
 import lombok.Data;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/3/10
  **/
 @Data

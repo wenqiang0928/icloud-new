@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/3/1
  **/
 @RestController
@@ -111,6 +111,22 @@ public class WriteController extends BaseController {
 									 @AuthenticationPrincipal AuthenticatedUser authenticatedUser) {
 		request.setUser(authenticatedUser);
 		this.documentWriteService.updateDesc(request);
+		return this.success();
+	}
+
+
+	/**
+	 * 修改案件号
+	 *
+	 * @param request
+	 * @param authenticatedUser
+	 * @return
+	 */
+	@PostMapping("/updateCaseNo")
+	public Result<String> updateCaseNo(@RequestBody @Valid UpdateCaseNoRequest request,
+									 @AuthenticationPrincipal AuthenticatedUser authenticatedUser) {
+		request.setUser(authenticatedUser);
+		this.documentWriteService.updateCaseNo(request);
 		return this.success();
 	}
 

@@ -5,7 +5,7 @@ import com.honvay.hdms.framework.core.ErrorMessage;
 
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2018/12/24
  **/
 public class Result<T> {

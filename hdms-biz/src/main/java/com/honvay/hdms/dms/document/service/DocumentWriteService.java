@@ -7,7 +7,7 @@ import com.honvay.hdms.dms.model.request.*;
 import javax.validation.Valid;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/2/28
  **/
 public interface DocumentWriteService {
@@ -118,6 +118,14 @@ public interface DocumentWriteService {
 	 * @return
 	 */
 	Document updateDesc(UpdateDescRequest request);
+
+	/**
+	 * 修改案件编号
+	 *
+	 * @param request
+	 * @return
+	 */
+	Document updateCaseNo(UpdateCaseNoRequest request);
 
 	void setAuthorize(Integer documentId, Integer userId);
 

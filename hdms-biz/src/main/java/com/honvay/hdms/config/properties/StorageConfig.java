@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import java.io.File;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/2/23
  **/
 @Data

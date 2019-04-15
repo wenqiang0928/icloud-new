@@ -6,7 +6,7 @@ import com.honvay.hdms.dms.favorite.entity.Favorite;
 import com.honvay.hdms.framework.support.service.BaseService;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 public interface FavoriteService extends BaseService<Favorite, Integer> {
 

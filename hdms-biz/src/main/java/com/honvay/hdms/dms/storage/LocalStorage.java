@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 @Slf4j
 public class LocalStorage implements Storage {

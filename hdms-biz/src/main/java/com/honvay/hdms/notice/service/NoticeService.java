@@ -6,7 +6,7 @@ import com.honvay.hdms.framework.support.service.BaseService;
 import com.honvay.hdms.notice.entity.Notice;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 public interface NoticeService extends BaseService<Notice, Integer> {
 

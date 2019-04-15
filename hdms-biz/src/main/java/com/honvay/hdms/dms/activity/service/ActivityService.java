@@ -10,7 +10,7 @@ import com.honvay.hdms.framework.support.service.BaseService;
 import java.util.List;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 public interface ActivityService extends BaseService<Activity, Integer> {
 	List<Activity> findDirectoryActivityByPath(String path);

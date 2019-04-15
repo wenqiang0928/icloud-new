@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 @Data
 @TableName("hdms_setting")

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 /**
  * 认证失败逻辑处理，页面登录和Token认证都会走这个逻辑
  *
- * @author LIQIU
+ * @author wxq
  * created on 2018-11-19
  **/
 @Component

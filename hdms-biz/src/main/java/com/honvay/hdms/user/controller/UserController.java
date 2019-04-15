@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 @RestController
 @RequestMapping("/user")
