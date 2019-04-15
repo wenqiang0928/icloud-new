@@ -2,6 +2,7 @@
 package com.honvay.hdms.auth.web.configuration;
 
 import com.honvay.hdms.auth.web.captcha.filter.CaptchaAuthenticationFilter;
+import com.honvay.hdms.auth.web.deadline.filter.DeadlineFilter;
 import com.honvay.hdms.auth.web.handler.WebAuthenticationSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -23,8 +24,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.preauth.AbstractPreAuthenticatedProcessingFilter;
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
@@ -35,86 +38,89 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Order(99)
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	private ApplicationEventPublisher applicationEventPublisher;
+    @Autowired
+    private ApplicationEventPublisher applicationEventPublisher;
 
-	@Autowired
-	private SessionRegistry sessionRegistry;
+    @Autowired
+    private SessionRegistry sessionRegistry;
 
-	@Autowired
-	private SessionAuthenticationStrategy sessionAuthenticationStrategy;
+    @Autowired
+    private SessionAuthenticationStrategy sessionAuthenticationStrategy;
 
-	@Autowired
-	private UserDetailsService userDetailsService;
+    @Autowired
+    private UserDetailsService userDetailsService;
 
-	@Autowired
-	private AuthenticationFailureHandler failureHandler;
+    @Autowired
+    private DeadlineFilter deadlineFilter;
 
-	private CaptchaAuthenticationFilter captchaAuthenticationFilter = new CaptchaAuthenticationFilter();
+    @Autowired
+    private AuthenticationFailureHandler failureHandler;
 
-	@Bean
-	public AuthenticationSuccessHandler successHandler() {
-		return new WebAuthenticationSuccessHandler();
-	}
+    private CaptchaAuthenticationFilter captchaAuthenticationFilter = new CaptchaAuthenticationFilter();
 
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+    @Bean
+    public AuthenticationSuccessHandler successHandler() {
+        return new WebAuthenticationSuccessHandler();
+    }
 
-	@Bean
-	@Override
-	public AuthenticationManager authenticationManagerBean() throws Exception {
-		return super.authenticationManagerBean();
-	}
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
-	@Override
-	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/asset/**");
-	}
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		captchaAuthenticationFilter.addRequestMatcher(new AntPathRequestMatcher("/login", HttpMethod.POST.name()), this.failureHandler);
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/asset/**");
+    }
 
-		http.setSharedObject(CaptchaAuthenticationFilter.class, captchaAuthenticationFilter);
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        captchaAuthenticationFilter.addRequestMatcher(new AntPathRequestMatcher("/login", HttpMethod.POST.name()), this.failureHandler);
 
-		http.authorizeRequests()
-				.antMatchers("/login", "/logout", "/error", "/fs/stream").permitAll()
-				.antMatchers("/captcha", "/session-invalid").permitAll()
-				.and()
-				.formLogin()
-				.loginProcessingUrl("/login")
-				.loginPage("/login")
-				.failureHandler(this.failureHandler)
-				.successHandler(this.successHandler())
-				//.failureHandler(new WebAuthenticationFailureHandler())
-				.and()
-				.logout()
-				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-				.logoutSuccessUrl("/login?logout")
-				.invalidateHttpSession(false)
-				.and()
-				.addFilterBefore(captchaAuthenticationFilter, AbstractPreAuthenticatedProcessingFilter.class)
-				.sessionManagement()
-				.invalidSessionUrl("/session-invalid")
-				.maximumSessions(1)
-				.expiredUrl("/session-invalid")
-				.sessionRegistry(sessionRegistry)
-				.and()
-				.sessionFixation()
-				.migrateSession()
-				.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-				.sessionAuthenticationStrategy(sessionAuthenticationStrategy);
-		http.authorizeRequests().antMatchers("/**").authenticated();
-		http.getSharedObject(AuthenticationManagerBuilder.class).authenticationEventPublisher(new DefaultAuthenticationEventPublisher(applicationEventPublisher));
-	}
+        http.setSharedObject(CaptchaAuthenticationFilter.class, captchaAuthenticationFilter);
+//        http.addFilterBefore(this.deadlineFilter, UsernamePasswordAuthenticationFilter.class);
+        http.authorizeRequests()
+                .antMatchers("/login", "/logout", "/error", "/fs/stream").permitAll()
+                .antMatchers("/captcha", "/session-invalid").permitAll()
+                .antMatchers("/**").authenticated()
+                .and()
+                .formLogin()
+                .loginProcessingUrl("/login")
+                .loginPage("/login")
+                .failureHandler(this.failureHandler)
+                .successHandler(this.successHandler())
+                //.failureHandler(new WebAuthenticationFailureHandler())
+                .and()
+                .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login?logout")
+                .invalidateHttpSession(false)
+                .and()
+                .addFilterBefore(captchaAuthenticationFilter, AbstractPreAuthenticatedProcessingFilter.class)
+                .sessionManagement()
+                .invalidSessionUrl("/session-invalid")
+                .maximumSessions(1)
+                .expiredUrl("/session-invalid")
+                .sessionRegistry(sessionRegistry)
+                .and()
+                .sessionFixation()
+                .migrateSession()
+                .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+                .sessionAuthenticationStrategy(sessionAuthenticationStrategy);
+        http.getSharedObject(AuthenticationManagerBuilder.class).authenticationEventPublisher(new DefaultAuthenticationEventPublisher(applicationEventPublisher));
+    }
 
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.authenticationEventPublisher(new DefaultAuthenticationEventPublisher(applicationEventPublisher))
-				.userDetailsService(userDetailsService)
-				.passwordEncoder(passwordEncoder());
-	}
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationEventPublisher(new DefaultAuthenticationEventPublisher(applicationEventPublisher))
+                .userDetailsService(userDetailsService)
+                .passwordEncoder(passwordEncoder());
+    }
 
 }
