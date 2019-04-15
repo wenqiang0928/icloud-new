@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/3/10
  **/
 @Controller

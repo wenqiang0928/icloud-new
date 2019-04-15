@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/2/22
  **/
 public interface DocumentMapper extends BaseMapper<Document> {

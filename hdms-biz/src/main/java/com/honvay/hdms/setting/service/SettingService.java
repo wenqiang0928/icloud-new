@@ -6,7 +6,7 @@ import com.honvay.hdms.framework.support.service.BaseService;
 import com.honvay.hdms.setting.entity.Setting;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 public interface SettingService extends BaseService<Setting, Integer> {
 

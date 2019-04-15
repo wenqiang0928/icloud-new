@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 @Data
 @TableName("hdms_review")

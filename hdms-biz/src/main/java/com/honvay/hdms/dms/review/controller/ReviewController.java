@@ -18,7 +18,7 @@ import javax.validation.Valid;
 import java.util.Date;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 @RestController
 @RequestMapping("/review")

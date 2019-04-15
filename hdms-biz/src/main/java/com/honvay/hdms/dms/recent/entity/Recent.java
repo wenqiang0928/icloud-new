@@ -7,7 +7,7 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 @Data
 @TableName("hdms_recent")

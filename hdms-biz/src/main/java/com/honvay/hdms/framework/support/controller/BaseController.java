@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/2/23
  **/
 public class BaseController {

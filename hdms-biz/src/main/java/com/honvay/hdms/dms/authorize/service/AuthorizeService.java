@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 public interface AuthorizeService extends BaseService<Authorize, Integer> {
 

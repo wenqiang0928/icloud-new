@@ -2,7 +2,7 @@
 package com.honvay.hdms.dms.storage;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/3/4
  **/
 public class StorageDirectory {

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2018/12/26
  **/
 public class WebAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {

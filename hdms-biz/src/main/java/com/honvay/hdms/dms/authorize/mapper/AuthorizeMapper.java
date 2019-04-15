@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/2/25
  **/
 public interface AuthorizeMapper extends BaseMapper<Authorize> {

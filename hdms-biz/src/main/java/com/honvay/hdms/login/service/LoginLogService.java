@@ -9,7 +9,7 @@ import com.honvay.hdms.login.model.LoginLogDto;
 import com.honvay.hdms.login.model.LoginLogQuery;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 public interface LoginLogService extends BaseService<LoginLog, Integer> {
 

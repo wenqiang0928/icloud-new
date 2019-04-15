@@ -285,6 +285,27 @@ app.factory('FileOperation', ['$rootScope', 'FileSystem', '$modal', 'Messager', 
                 }
             });
         }
+        $rootScope.updateCaseNo = function (file, success, error) {
+            var toast = $scope.toaster.wait({
+                title: '正在修改案件编号...'
+            });
+            FileSystem.updateCaseNo(file).then(function (result) {
+                toast.doSuccess({
+                    title: "修改成功"
+                });
+                if (angular.isFunction(success)) {
+                    success(result, name);
+                }
+            }, function (cause) {
+                toast.doError({
+                    title: "修改失败",
+                    body: cause
+                });
+                if (angular.isFunction(error)) {
+                    error(cause);
+                }
+            });
+        }
 
         $rootScope.download = function (file) {
             $scope.downloadURL = "/fs/download?id=" + file.id;

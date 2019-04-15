@@ -25,6 +25,12 @@
         <result property="deleteDate" jdbcType="TIMESTAMP" column="deleteDate"/>
         <result property="locked" jdbcType="CHAR" column="locked"/>
         <result property="deleted" jdbcType="CHAR" column="deleted"/>
+        <result property="caseNo" jdbcType="VARCHAR" column="case_no"/>
+        <result property="caseTime" jdbcType="VARCHAR" column="case_time"/>
+        <result property="caseName" jdbcType="VARCHAR" column="case_name"/>
+        <result property="caseAddr" jdbcType="VARCHAR" column="case_addr"/>
+        <result property="caseDesc" jdbcType="VARCHAR" column="case_desc"/>
+        <result property="policingNo" jdbcType="VARCHAR" column="policing_no"/>
         <result property="favoriteId" jdbcType="VARCHAR" column="favoriteId"/>
         <association property="creationBy" javaType="com.honvay.hdms.dms.model.dto.DocumentOperatorDto">
             <result property="id" column="creationById"/>
@@ -92,13 +98,20 @@
                lockedBy.avatar  as lockedByAvatar,
                t.lock_date      as lockDate,
                t.locked         as locked,
+               t.case_no         as caseNo,
+               t.case_name         as caseName,
+               t.case_addr         as caseAddr,
+               t.case_time         as caseTime,
+               t.case_desc         as caseDesc,
+               t.policing_no         as policingNo,
                deleteBy.id      as deleteById,
                deleteBy.name    as deleteByName,
                deleteBy.avatar  as deleteByAvatar,
                t.deleted        as deleted,
                t.delete_date    as deleteDate,
                favorite.id      as favoriteId
-        from hdms_document t
+
+                 from hdms_document t
                  left join hdms_user createdBy on createdBy.id = t.created_by
                  left join hdms_user updatedBy on updatedBy.id = t.updated_By
                  left join hdms_user lockedBy on lockedBy.id = t.locked_by

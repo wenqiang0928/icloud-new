@@ -4,7 +4,7 @@ package com.honvay.hdms.dashboard.report.model;
 import lombok.Data;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/3/15
  **/
 @Data

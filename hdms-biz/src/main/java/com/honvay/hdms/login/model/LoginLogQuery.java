@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/3/13
  **/
 @Data

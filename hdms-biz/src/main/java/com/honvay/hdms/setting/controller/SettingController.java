@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 @RestController
 @RequestMapping("/setting")

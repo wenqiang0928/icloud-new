@@ -13,7 +13,7 @@ import java.util.UUID;
 import java.util.function.Consumer;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/3/3
  **/
 public class DefaultUploader implements Uploader {

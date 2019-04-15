@@ -2,7 +2,7 @@
 package com.honvay.hdms.dms.document.enums;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/2/22
  **/
 public enum DocumentType {

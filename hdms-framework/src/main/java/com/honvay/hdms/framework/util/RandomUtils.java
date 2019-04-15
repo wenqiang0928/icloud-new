@@ -6,7 +6,7 @@ import java.util.Random;
 /**
  * 验证码生成器
  *
- * @author LIQIU
+ * @author wxq
  */
 public class RandomUtils {
 

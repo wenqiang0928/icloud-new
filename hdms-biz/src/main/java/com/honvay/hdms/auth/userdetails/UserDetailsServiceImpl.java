@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 /**
- * @author LIQIU
+ * @author wxq
  * @date 21.5.18
  */
 @Component

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.stream.Collectors;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/3/7
  **/
 @RestController

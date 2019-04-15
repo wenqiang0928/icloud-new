@@ -310,24 +310,29 @@
                             <i class="fa fa-tag hover" ng-if="checkPermission('edit')" tooltip="设置标签"
                                ng-click="setTag(current)"></i>
                         </div>
-                        <div class="col-sm-3 font-bold no-padder text-right m-t-xs">备注：</div>
+<!--                        <div class="col-sm-3 font-bold no-padder text-right m-t-xs">备注：</div>-->
+<!--                        <div class="col-sm-9 m-t-xs hover-container" ng-if="checkPermission('edit')">-->
+<!--                            <span class="hover" tooltip="点击编辑备注" ng-show="!descEditing && current.description"-->
+<!--                                  ng-click="descEditing=true">-->
+<!--                                {{current.description}}-->
+<!--                            </span>-->
+<!--                            <span class="text-muted hover" tooltip="点击编辑备注"-->
+<!--                                  ng-show="!descEditing && !current.description" ng-click="descEditing = true">-->
+<!--                                没有备注-->
+<!--                            </span>-->
+<!--                            <textarea ng-show="descEditing" ng-model="current.description"-->
+<!--                                      ng-blur="updateDesc();descEditing=false;" class="form-control m-t-xs"-->
+<!--                                      rows="5"></textarea>-->
+<!--                        </div>-->
+<!--                        <div class="col-sm-9 m-t-xs hover-container" ng-if="!checkPermission('edit')">-->
+<!--                            <span ng-show="current.description">{{current.description}}</span>-->
+<!--                            <span class="text-muted" ng-show="!current.description">没有备注</span>-->
+<!--                        </div>-->
+                        <div class="col-sm-3 font-bold no-padder text-right m-t-xs">案件编号：</div>
                         <div class="col-sm-9 m-t-xs hover-container" ng-if="checkPermission('edit')">
-                            <span class="hover" tooltip="点击编辑备注" ng-show="!descEditing && current.description"
-                                  ng-click="descEditing=true">
-                                {{current.description}}
-                            </span>
-                            <span class="text-muted hover" tooltip="点击编辑备注"
-                                  ng-show="!descEditing && !current.description" ng-click="descEditing = true">
-                                没有备注
-                            </span>
-                            <textarea ng-show="descEditing" ng-model="current.description"
-                                      ng-blur="updateDesc();descEditing=false;" class="form-control m-t-xs"
-                                      rows="5"></textarea>
+                            <input type="text" ng-model="current.caseNo" ng-blur="updateCaseNo()" class="form-control m-t-xs"/>
                         </div>
-                        <div class="col-sm-9 m-t-xs hover-container" ng-if="!checkPermission('edit')">
-                            <span ng-show="current.description">{{current.description}}</span>
-                            <span class="text-muted" ng-show="!current.description">没有备注</span>
-                        </div>
+
                     </div>
                 </tab>
                 <tab ng-if="canShowAuthorizer(current);">

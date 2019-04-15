@@ -2,7 +2,7 @@
 package com.honvay.hdms.user.enums;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/3/12
  **/
 public class UserRole {

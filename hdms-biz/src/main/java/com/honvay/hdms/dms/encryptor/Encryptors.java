@@ -6,7 +6,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/3/4
  **/
 public interface Encryptors {

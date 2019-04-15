@@ -31,7 +31,7 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 @EnableWebSecurity
 @Configuration

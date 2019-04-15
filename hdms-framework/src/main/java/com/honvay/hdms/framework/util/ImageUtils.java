@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2018/12/25
  **/
 public class ImageUtils {

@@ -2,7 +2,7 @@
 package com.honvay.hdms.dms.activity.enums;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/3/9
  **/
 public class ActivityScope {

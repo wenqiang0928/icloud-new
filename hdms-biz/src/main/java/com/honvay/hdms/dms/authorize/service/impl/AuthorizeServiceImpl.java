@@ -39,7 +39,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 @Service
 public class AuthorizeServiceImpl extends BaseServiceImpl<Authorize, Integer> implements AuthorizeService {

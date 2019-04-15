@@ -5,7 +5,7 @@ import com.honvay.hdms.dms.document.entity.Document;
 import org.springframework.context.ApplicationEvent;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 public class DeleteEvent extends ApplicationEvent {
 

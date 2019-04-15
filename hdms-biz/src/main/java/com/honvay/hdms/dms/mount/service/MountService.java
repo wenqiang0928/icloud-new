@@ -5,7 +5,7 @@ import com.honvay.hdms.dms.mount.entity.Mount;
 import com.honvay.hdms.framework.support.service.BaseService;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/3/9
  **/
 public interface MountService extends BaseService<Mount, Integer> {

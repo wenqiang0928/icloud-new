@@ -14,7 +14,7 @@ import org.springframework.session.FindByIndexNameSessionRepository;
 import org.springframework.session.security.SpringSessionBackedSessionRegistry;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2018/12/24
  **/
 @Configuration

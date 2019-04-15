@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 /**
  * 格式工具类，用于检查各种格式
  *
- * @author LIQIU
+ * @author wxq
  * created on 2018/12/25
  **/
 public class PatternUtils {

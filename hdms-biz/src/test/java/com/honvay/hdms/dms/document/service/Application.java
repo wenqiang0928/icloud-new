@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/2/23
  **/
 @MapperScan("com.honvay.**.mapper")

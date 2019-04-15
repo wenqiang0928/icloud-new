@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 @Service
 public class NoticeServiceImpl extends BaseServiceImpl<Notice, Integer> implements NoticeService {

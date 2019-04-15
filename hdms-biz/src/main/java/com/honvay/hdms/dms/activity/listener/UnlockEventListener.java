@@ -13,7 +13,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/3/9
  **/
 @Slf4j

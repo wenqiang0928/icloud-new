@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/3/5
  **/
 @Data

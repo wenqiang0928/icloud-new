@@ -8,7 +8,7 @@ import com.honvay.hdms.user.model.*;
 import java.util.List;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 public interface UserService extends BaseService<User, Integer> {
 

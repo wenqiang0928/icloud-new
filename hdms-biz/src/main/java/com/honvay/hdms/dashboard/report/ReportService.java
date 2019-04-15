@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/3/15
  **/
 @Service

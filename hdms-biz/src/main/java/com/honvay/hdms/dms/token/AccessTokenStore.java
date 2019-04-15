@@ -9,7 +9,7 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/3/15
  **/
 @Component

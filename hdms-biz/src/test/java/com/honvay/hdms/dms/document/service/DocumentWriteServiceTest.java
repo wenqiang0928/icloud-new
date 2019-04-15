@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Collections;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/3/1
  **/
 @SpringBootTest

@@ -156,7 +156,22 @@ app.factory('FileSystem', ['$http', '$q', function ($http, $q) {
         });
         return d.promise;
     }
-
+    service.updateCaseNo = function (file) {
+        var d = $q.defer();
+        $http.post("/fs/updateCaseNo", {
+            id: file.id,
+            caseNo: file.caseNo
+        }).success(function (result) {
+            if (result.success) {
+                d.resolve(result);
+            } else {
+                d.reject(result.message);
+            }
+        }).error(function (data, status) {
+            d.reject(status);
+        });
+        return d.promise;
+    }
 
     /**
      * 复制文件

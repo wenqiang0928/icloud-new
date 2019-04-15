@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/2/22
  **/
 @Data
@@ -37,4 +37,12 @@ public class DocumentFullDto {
 	private Integer favoriteId;
 	private String contentType;
 	private String description;
+
+	private String caseNo;
+	private String policingNo;
+	private String caseName;
+	private String caseTime;
+	private String caseDesc;
+	private String caseAddr;
+
 }

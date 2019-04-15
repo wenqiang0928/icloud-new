@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 
 /**
- * @author LIQIU
+ * @author wxq
  */
 @Service
 public class LoginLogServiceImpl extends BaseServiceImpl<LoginLog, Integer> implements LoginLogService, ApplicationListener<AuthenticationSuccessEvent> {

@@ -5,7 +5,7 @@ import com.honvay.hdms.dms.document.entity.Document;
 import org.springframework.context.ApplicationEvent;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2019/3/9
  **/
 public class ReviewRemoveEvent extends ApplicationEvent {

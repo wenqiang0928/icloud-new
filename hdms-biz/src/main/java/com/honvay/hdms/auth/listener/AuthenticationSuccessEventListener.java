@@ -13,7 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
 /**
- * @author LIQIU
+ * @author wxq
  * created on 2018-11-19
  **/
 @Component
