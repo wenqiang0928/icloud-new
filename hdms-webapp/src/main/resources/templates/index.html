@@ -107,9 +107,9 @@
                     <li>
                         <a ui-sref="changePassword">修改密码</a>
                     </li>
-<!--                    <li ng-show="user.role == 'ROLE_SYS_ADMIN'">-->
-<!--                        <a href="/dashboard" target="_self">进入控制台</a>-->
-<!--                    </li>-->
+                    <li ng-show="user.role == 'ROLE_SYS_ADMIN'">
+                        <a href="/dashboard" target="_self">进入控制台</a>
+                    </li>
                     <li class="divider"></li>
                     <li>
                         <a href="/logout" target="_self">退出登录</a>
@@ -127,12 +127,12 @@
                 <!--  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                    <span>网盘</span>
                  </li> -->
-<!--                <li ui-sref-active="active" ng-class="{'active':mountAlias == 'enterprise'}">-->
-<!--                    <a ui-sref='directory({directory:"enterprise"})'>-->
-<!--                        <i class="fa fa-users  "></i>-->
-<!--                        <span>企业文档</span>-->
-<!--                    </a>-->
-<!--                </li>-->
+                <li ui-sref-active="active" ng-class="{'active':mountAlias == 'enterprise'}">
+                    <a ui-sref='directory({directory:"enterprise"})'>
+                        <i class="fa fa-users  "></i>
+                        <span>企业文档</span>
+                    </a>
+                </li>
                 <li ui-sref-active="active" ng-class="{'active':mountAlias == 'my'}">
                     <a ui-sref='directory({directory:"my"})'>
                         <i class="fa fa-user "></i>

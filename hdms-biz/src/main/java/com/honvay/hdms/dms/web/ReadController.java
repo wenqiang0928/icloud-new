@@ -98,8 +98,11 @@ public class ReadController extends BaseController {
 		//过滤权限
 		List<DocumentFullDto> documents = this.documentReadService.findFullDocument(id, mount);
 		//企业文档需要判断权限
-		if (!user.getMountId().equals(mount)) {
-			documents = this.authorizeService.filterDocuments(user, documents, PermissionType.VIEW);
+		if(!user.getRole().equals("ROLE_SYS_ADMIN")){
+
+			if (!user.getMountId().equals(mount)) {
+				documents = this.authorizeService.filterDocuments(user, documents, PermissionType.VIEW);
+			}
 		}
 
 		directoryDetailDto.setFiles(documents);
