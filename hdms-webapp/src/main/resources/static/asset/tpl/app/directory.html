@@ -4,7 +4,7 @@
             <div class="col-sm-10 col-xs-10 padder-sm file-path" ui-sref-active="active">
                 <a ng-if="mountAlias == 'enterprise'" ui-sref='directory({directory:"enterprise"})'>
                     <i class="fa fa-users  "></i>
-                    <span>企业文档</span>
+                    <span>工作文档</span>
                     <i ng-if="current" class="fa fa-angle-right"></i>
                 </a>
                 <a ng-if="mountAlias == 'my'" ui-sref='directory({directory:"my"})'>
@@ -310,28 +310,142 @@
                             <i class="fa fa-tag hover" ng-if="checkPermission('edit')" tooltip="设置标签"
                                ng-click="setTag(current)"></i>
                         </div>
-<!--                        <div class="col-sm-3 font-bold no-padder text-right m-t-xs">备注：</div>-->
-<!--                        <div class="col-sm-9 m-t-xs hover-container" ng-if="checkPermission('edit')">-->
-<!--                            <span class="hover" tooltip="点击编辑备注" ng-show="!descEditing && current.description"-->
-<!--                                  ng-click="descEditing=true">-->
-<!--                                {{current.description}}-->
-<!--                            </span>-->
-<!--                            <span class="text-muted hover" tooltip="点击编辑备注"-->
-<!--                                  ng-show="!descEditing && !current.description" ng-click="descEditing = true">-->
-<!--                                没有备注-->
-<!--                            </span>-->
-<!--                            <textarea ng-show="descEditing" ng-model="current.description"-->
-<!--                                      ng-blur="updateDesc();descEditing=false;" class="form-control m-t-xs"-->
-<!--                                      rows="5"></textarea>-->
-<!--                        </div>-->
-<!--                        <div class="col-sm-9 m-t-xs hover-container" ng-if="!checkPermission('edit')">-->
-<!--                            <span ng-show="current.description">{{current.description}}</span>-->
-<!--                            <span class="text-muted" ng-show="!current.description">没有备注</span>-->
-<!--                        </div>-->
-                        <div class="col-sm-3 font-bold no-padder text-right m-t-xs">案件编号：</div>
-                        <div class="col-sm-9 m-t-xs hover-container" ng-if="checkPermission('edit')">
-                            <input type="text" ng-model="current.caseNo" ng-blur="updateCaseNo()" class="form-control m-t-xs"/>
+                        <!--                        <div class="col-sm-3 font-bold no-padder text-right m-t-xs">备注：</div>-->
+                        <!--                        <div class="col-sm-9 m-t-xs hover-container" ng-if="checkPermission('edit')">-->
+                        <!--                            <span class="hover" tooltip="点击编辑备注" ng-show="!descEditing && current.description"-->
+                        <!--                                  ng-click="descEditing=true">-->
+                        <!--                                {{current.description}}-->
+                        <!--                            </span>-->
+                        <!--                            <span class="text-muted hover" tooltip="点击编辑备注"-->
+                        <!--                                  ng-show="!descEditing && !current.description" ng-click="descEditing = true">-->
+                        <!--                                没有备注-->
+                        <!--                            </span>-->
+                        <!--                            <textarea ng-show="descEditing" ng-model="current.description"-->
+                        <!--                                      ng-blur="updateDesc();descEditing=false;" class="form-control m-t-xs"-->
+                        <!--                                      rows="5"></textarea>-->
+                        <!--                        </div>-->
+                        <!--                        <div class="col-sm-9 m-t-xs hover-container" ng-if="!checkPermission('edit')">-->
+                        <!--                            <span ng-show="current.description">{{current.description}}</span>-->
+                        <!--                            <span class="text-muted" ng-show="!current.description">没有备注</span>-->
+                        <!--                        </div>-->
+
+
+                        <div class="col-sm-4 font-bold no-padder text-right m-t-xs">案件编号：</div>
+                        <div class="col-sm-8 m-t-xs hover-container" ng-if="checkPermission('edit')">
+                                                    <span class="hover" tooltip="点击编辑案件编号"
+                                                          ng-show="!caseNoEditing && current.caseNo"
+                                                          ng-click="caseNoEditing=true">
+                                                        {{current.caseNo}}
+                                                    </span>
+                            <span class="text-muted hover" tooltip="点击编辑案件编号"
+                                  ng-show="!caseNoEditing && !current.caseNo" ng-click="caseNoEditing = true">
+                                                        没有案件编号
+                                                    </span>
+                            <input ng-show="caseNoEditing" ng-model="current.caseNo" ng-blur="updateCaseNo();caseNoEditing=false;" class="form-control m-t-xs"/>
                         </div>
+                        <div class="col-sm-8 m-t-xs hover-container" ng-if="!checkPermission('edit')">
+                            <span ng-show="current.caseNo">{{current.caseNo}}</span>
+                            <span class="text-muted" ng-show="!current.caseNo">没有案件编号</span>
+                        </div>
+
+
+                        <div class="col-sm-4 font-bold no-padder text-right m-t-xs">警情编号：</div>
+                        <div class="col-sm-8 m-t-xs hover-container" ng-if="checkPermission('edit')">
+                                                    <span class="hover" tooltip="点击编辑警情编号"
+                                                          ng-show="!policingNoEditing && current.policingNo"
+                                                          ng-click="policingNoEditing=true">
+                                                        {{current.policingNo}}
+                                                    </span>
+                            <span class="text-muted hover" tooltip="点击编辑警情编号"
+                                  ng-show="!policingNoEditing && !current.policingNo" ng-click="policingNoEditing = true">
+                                                        没有警情编号
+                                                    </span>
+                            <input ng-show="policingNoEditing" ng-model="current.policingNo" ng-blur="updatePolicingNo();policingNoEditing=false;" class="form-control m-t-xs"/>
+                        </div>
+                        <div class="col-sm-8 m-t-xs hover-container" ng-if="!checkPermission('edit')">
+                            <span ng-show="current.policingNo">{{current.policingNo}}</span>
+                            <span class="text-muted" ng-show="!current.policingNo">没有警情编号</span>
+                        </div>
+
+
+                        <div class="col-sm-4 font-bold no-padder text-right m-t-xs">案件名称：</div>
+                        <div class="col-sm-8 m-t-xs hover-container" ng-if="checkPermission('edit')">
+                                                    <span class="hover" tooltip="点击编辑案件名称"
+                                                          ng-show="!caseNameEditing && current.caseName"
+                                                          ng-click="caseNameEditing=true">
+                                                        {{current.caseName}}
+                                                    </span>
+                            <span class="text-muted hover" tooltip="点击编辑案件名称"
+                                  ng-show="!caseNameEditing && !current.caseName" ng-click="caseNameEditing = true">
+                                                        没有案件名称
+                                                    </span>
+                            <input ng-show="caseNameEditing" ng-model="current.caseName" ng-blur="updateCaseName();caseNameEditing=false;" class="form-control m-t-xs"/>
+                        </div>
+                        <div class="col-sm-8 m-t-xs hover-container" ng-if="!checkPermission('edit')">
+                            <span ng-show="current.caseName">{{current.caseName}}</span>
+                            <span class="text-muted" ng-show="!current.caseName">没有案件名称</span>
+                        </div>
+
+
+                        <div class="col-sm-4 font-bold no-padder text-right m-t-xs">案发时间：</div>
+                        <div class="col-sm-8 m-t-xs hover-container" ng-if="checkPermission('edit')">
+                                                    <span class="hover" tooltip="点击编辑案发时间"
+                                                          ng-show="!caseTimeEditing && current.caseTime"
+                                                          ng-click="caseTimeEditing=true">
+                                                        {{current.caseTime}}
+                                                    </span>
+                            <span class="text-muted hover" tooltip="点击编辑案发时间"
+                                  ng-show="!caseTimeEditing && !current.caseTime" ng-click="caseTimeEditing = true">
+                                                        没有案发时间
+                                                    </span>
+                            <input ng-show="caseTimeEditing" ng-model="current.caseTime" ng-blur="updateCaseTime();caseTimeEditing=false;" class="form-control m-t-xs"/>
+                        </div>
+                        <div class="col-sm-8 m-t-xs hover-container" ng-if="!checkPermission('edit')">
+                            <span ng-show="current.caseTime">{{current.caseTime}}</span>
+                            <span class="text-muted" ng-show="!current.caseTime">没有案发时间</span>
+                        </div>
+
+
+                        <div class="col-sm-4 font-bold no-padder text-right m-t-xs">案发地点：</div>
+                        <div class="col-sm-8 m-t-xs hover-container" ng-if="checkPermission('edit')">
+                                                    <span class="hover" tooltip="点击编辑案发地点"
+                                                          ng-show="!caseAddrEditing && current.caseAddr"
+                                                          ng-click="caseAddrEditing=true">
+                                                        {{current.caseAddr}}
+                                                    </span>
+                            <span class="text-muted hover" tooltip="点击编辑案发地点"
+                                  ng-show="!caseAddrEditing && !current.caseAddr" ng-click="caseAddrEditing = true">
+                                                        没有案发地点
+                                                    </span>
+                            <input ng-show="caseAddrEditing" ng-model="current.caseAddr" ng-blur="updateCaseAddr();caseAddrEditing=false;" class="form-control m-t-xs"/>
+                        </div>
+                        <div class="col-sm-8 m-t-xs hover-container" ng-if="!checkPermission('edit')">
+                            <span ng-show="current.caseAddr">{{current.caseAddr}}</span>
+                            <span class="text-muted" ng-show="!current.caseAddr">没有案发地点</span>
+                        </div>
+
+
+                        <div class="col-sm-4 font-bold no-padder text-right m-t-xs">案件详情：</div>
+                        <div class="col-sm-8 m-t-xs hover-container" ng-if="checkPermission('edit')">
+                                                    <span class="hover" tooltip="点击编辑案件详情"
+                                                          ng-show="!caseDescEditing && current.caseDesc"
+                                                          ng-click="caseDescEditing=true">
+                                                        {{current.caseDesc}}
+                                                    </span>
+                            <span class="text-muted hover" tooltip="点击编辑案件详情"
+                                  ng-show="!caseDescEditing && !current.caseDesc" ng-click="caseDescEditing = true">
+                                                        没有案件详情
+                                                    </span>
+                            <textarea ng-show="caseDescEditing" ng-model="current.caseDesc"
+                                      ng-blur="updateCaseDesc();caseDescEditing=false;" class="form-control m-t-xs"
+                                      rows="5"></textarea>
+
+                        </div>
+                        <div class="col-sm-8 m-t-xs hover-container" ng-if="!checkPermission('edit')">
+                            <span ng-show="current.caseDesc">{{current.caseDesc}}</span>
+                            <span class="text-muted" ng-show="!current.caseDesc">没有案件详情</span>
+                        </div>
+
 
                     </div>
                 </tab>

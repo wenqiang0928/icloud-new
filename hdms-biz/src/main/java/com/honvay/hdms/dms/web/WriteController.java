@@ -130,6 +130,78 @@ public class WriteController extends BaseController {
 		return this.success();
 	}
 
+
+    /**
+     * 修改警情编号
+     *
+     * @param request
+     * @param authenticatedUser
+     * @return
+     */
+    @PostMapping("/updatePolicingNo")
+    public Result<String> updateCasePolicingNo(@RequestBody @Valid UpdatePolicingNoRequest request,
+                                       @AuthenticationPrincipal AuthenticatedUser authenticatedUser) {
+        request.setUser(authenticatedUser);
+        this.documentWriteService.updatePolicingNo(request);
+        return this.success();
+    }
+    /**
+     * 修改案件名称
+     *
+     * @param request
+     * @param authenticatedUser
+     * @return
+     */
+    @PostMapping("/updateCaseName")
+    public Result<String> updateCaseName(@RequestBody @Valid UpdateCaseNameRequest request,
+                                       @AuthenticationPrincipal AuthenticatedUser authenticatedUser) {
+        request.setUser(authenticatedUser);
+        this.documentWriteService.updateCaseName(request);
+        return this.success();
+    }
+    /**
+     * 修改案发时间
+     *
+     * @param request
+     * @param authenticatedUser
+     * @return
+     */
+    @PostMapping("/updateCaseTime")
+    public Result<String> updateCaseTime(@RequestBody @Valid UpdateCaseTimeRequest request,
+                                       @AuthenticationPrincipal AuthenticatedUser authenticatedUser) {
+        request.setUser(authenticatedUser);
+        this.documentWriteService.updateCaseTime(request);
+        return this.success();
+    }
+    /**
+     * 修改案发地点
+     *
+     * @param request
+     * @param authenticatedUser
+     * @return
+     */
+    @PostMapping("/updateCaseAddr")
+    public Result<String> updateCaseAddr(@RequestBody @Valid UpdateCaseAddrRequest request,
+                                       @AuthenticationPrincipal AuthenticatedUser authenticatedUser) {
+        request.setUser(authenticatedUser);
+        this.documentWriteService.updateCaseAddr(request);
+        return this.success();
+    }
+    /**
+     * 修改案件详情
+     *
+     * @param request
+     * @param authenticatedUser
+     * @return
+     */
+    @PostMapping("/updateCaseDesc")
+    public Result<String> updateCaseDesc(@RequestBody @Valid UpdateCaseDescRequest request,
+                                       @AuthenticationPrincipal AuthenticatedUser authenticatedUser) {
+        request.setUser(authenticatedUser);
+        this.documentWriteService.updateCaseDesc(request);
+        return this.success();
+    }
+
 	/**
 	 * 删除文件
 	 *

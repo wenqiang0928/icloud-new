@@ -53,19 +53,19 @@ app.controller('DirectoryCtrl',
                     });
             };
 
-            //这个权限模式会造成只有管理员才可以下载企业文档更目录的文件
+            //这个权限模式会造成只有管理员才可以下载工作文档更目录的文件
             $scope.checkPermission = function (permission) {
                 //我的文档
                 if ($scope.mountAlias === 'my') {
                     return true;
                 }
 
-                //企业文档创建文件夹
+                //工作文档创建文件夹
                 if (permission === 'create' && !$rootScope.current && $scope.mountAlias === 'enterprise') {
                     return true;
                 }
 
-                //企业文档上传文件夹
+                //工作文档上传文件夹
                 if (permission === 'upload') {
                     if (!$rootScope.current && $scope.mountAlias === 'enterprise') {
                         return false;
@@ -466,6 +466,51 @@ app.controller('DirectoryCtrl',
             $scope.updateCaseNo = function () {
                 console.log("updatecaseNo")
                 $rootScope.updateCaseNo($scope.current, function () {
+                }, function () {
+                });
+            }
+
+            /**
+             * 修改警情编号
+             */
+            $scope.updatePolicingNo = function () {
+                $rootScope.updatePolicingNo($scope.current, function () {
+                }, function () {
+                });
+            }
+
+            /**
+             * 修改案件名称
+             */
+            $scope.updateCaseName = function () {
+                $rootScope.updateCaseName($scope.current, function () {
+                }, function () {
+                });
+            }
+
+            /**
+             * 修改案发时间
+             */
+            $scope.updateCaseTime= function () {
+                $rootScope.updateCaseTime($scope.current, function () {
+                }, function () {
+                });
+            }
+
+            /**
+             * 修改案发地点
+             */
+            $scope.updateCaseAddr = function () {
+                $rootScope.updateCaseAddr($scope.current, function () {
+                }, function () {
+                });
+            }
+
+            /**
+             * 修改案件详情
+             */
+            $scope.updateCaseDesc = function () {
+                $rootScope.updateCaseDesc($scope.current, function () {
                 }, function () {
                 });
             }

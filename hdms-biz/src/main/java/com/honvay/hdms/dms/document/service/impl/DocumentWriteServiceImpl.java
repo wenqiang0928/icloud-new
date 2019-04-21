@@ -77,7 +77,7 @@ public class DocumentWriteServiceImpl implements DocumentWriteService, Applicati
 			Assert.isTrue(!document.getLocked(), "已锁定的文件不能移动");
 
 			if (DocumentType.isFile(document.getType()) && parent == null && request.getMount().equals(request.getUser().getOrganizationMount().getId())) {
-				throw new IllegalArgumentException("不能将文件移动到企业文档根目录");
+				throw new IllegalArgumentException("不能将文件移动到工作文档根目录");
 			}
 
 			Assert.isTrue(authorizeService.checkPermission(request.getUser(), document, PermissionType.REMOVE), "无权限复制文件到其他目录");
@@ -218,7 +218,7 @@ public class DocumentWriteServiceImpl implements DocumentWriteService, Applicati
 			Document document = this.findById(id);
 
 			if (DocumentType.isFile(document.getType()) && parent == null && request.getMount().equals(request.getUser().getOrganizationMount().getId())) {
-				throw new IllegalArgumentException("不能将文件复制到企业文档根目录");
+				throw new IllegalArgumentException("不能将文件复制到工作文档根目录");
 			}
 
 			Assert.isTrue(authorizeService.checkPermission(request.getUser(), document, PermissionType.COPY), "无权限复制文件到其他目录");
@@ -621,7 +621,11 @@ public class DocumentWriteServiceImpl implements DocumentWriteService, Applicati
 	@Override
 	public Document updateDesc(UpdateDescRequest request) {
 		Document document = this.findById(request.getId());
-		Assert.isTrue(authorizeService.checkPermission(request.getUser(), document, PermissionType.EDIT), "无权限修改文件备注");
+		//todo by wxq 管理员不受权限控制
+		if (!request.getUser().getRole().equals("ROLE_SYS_ADMIN")){
+
+			Assert.isTrue(authorizeService.checkPermission(request.getUser(), document, PermissionType.EDIT), "无权限修改文件备注");
+		}
 
 		String originalDescription = document.getDescription();
 
@@ -653,6 +657,96 @@ public class DocumentWriteServiceImpl implements DocumentWriteService, Applicati
 		update.setUpdateDate(new Date());
 		this.documentRepository.update(update);
 		UpdateCaseNoEvent event = new UpdateCaseNoEvent(document, originalCaseNo, request.getUser().getId());
+		this.applicationEventPublisher.publishEvent(event);
+		return document;
+	}
+
+	@Override
+	public Document updatePolicingNo(UpdatePolicingNoRequest request) {
+		Document document = this.findById(request.getId());
+		Assert.isTrue(authorizeService.checkPermission(request.getUser(), document, PermissionType.EDIT), "无权限修改文件备注");
+
+		String originalPolicingNo = document.getPolicingNo();
+
+		Document update = new Document();
+		update.setId(request.getId());
+		update.setPolicingNo(request.getPolicingNo());
+		update.setUpdatedBy(request.getUser().getId());
+		update.setUpdateDate(new Date());
+		this.documentRepository.update(update);
+		UpdatePolicingNoEvent event = new UpdatePolicingNoEvent(document, originalPolicingNo, request.getUser().getId());
+		this.applicationEventPublisher.publishEvent(event);
+		return document;
+	}
+
+	@Override
+	public Document updateCaseName(UpdateCaseNameRequest request) {
+		Document document = this.findById(request.getId());
+		Assert.isTrue(authorizeService.checkPermission(request.getUser(), document, PermissionType.EDIT), "无权限修改文件备注");
+
+		String originalCaseName = document.getCaseName();
+
+		Document update = new Document();
+		update.setId(request.getId());
+		update.setCaseName(request.getCaseName());
+		update.setUpdatedBy(request.getUser().getId());
+		update.setUpdateDate(new Date());
+		this.documentRepository.update(update);
+		UpdateCaseNoEvent event = new UpdateCaseNoEvent(document, originalCaseName, request.getUser().getId());
+		this.applicationEventPublisher.publishEvent(event);
+		return document;
+	}
+
+	@Override
+	public Document updateCaseTime(UpdateCaseTimeRequest request) {
+		Document document = this.findById(request.getId());
+		Assert.isTrue(authorizeService.checkPermission(request.getUser(), document, PermissionType.EDIT), "无权限修改文件备注");
+
+		String originalCaseTime = document.getCaseTime();
+
+		Document update = new Document();
+		update.setId(request.getId());
+		update.setCaseTime(request.getCaseTime());
+		update.setUpdatedBy(request.getUser().getId());
+		update.setUpdateDate(new Date());
+		this.documentRepository.update(update);
+		UpdateCaseNoEvent event = new UpdateCaseNoEvent(document, originalCaseTime, request.getUser().getId());
+		this.applicationEventPublisher.publishEvent(event);
+		return document;
+	}
+
+	@Override
+	public Document updateCaseAddr(UpdateCaseAddrRequest request) {
+		Document document = this.findById(request.getId());
+		Assert.isTrue(authorizeService.checkPermission(request.getUser(), document, PermissionType.EDIT), "无权限修改文件备注");
+
+		String originalCaseAddr = document.getCaseAddr();
+
+		Document update = new Document();
+		update.setId(request.getId());
+		update.setCaseAddr(request.getCaseAddr());
+		update.setUpdatedBy(request.getUser().getId());
+		update.setUpdateDate(new Date());
+		this.documentRepository.update(update);
+		UpdateCaseNoEvent event = new UpdateCaseNoEvent(document, originalCaseAddr, request.getUser().getId());
+		this.applicationEventPublisher.publishEvent(event);
+		return document;
+	}
+
+	@Override
+	public Document updateCaseDesc(UpdateCaseDescRequest request) {
+		Document document = this.findById(request.getId());
+		Assert.isTrue(authorizeService.checkPermission(request.getUser(), document, PermissionType.EDIT), "无权限修改文件备注");
+
+		String originalCaseDesc = document.getCaseDesc();
+
+		Document update = new Document();
+		update.setId(request.getId());
+		update.setCaseDesc(request.getCaseDesc());
+		update.setUpdatedBy(request.getUser().getId());
+		update.setUpdateDate(new Date());
+		this.documentRepository.update(update);
+		UpdateCaseNoEvent event = new UpdateCaseNoEvent(document, originalCaseDesc, request.getUser().getId());
 		this.applicationEventPublisher.publishEvent(event);
 		return document;
 	}

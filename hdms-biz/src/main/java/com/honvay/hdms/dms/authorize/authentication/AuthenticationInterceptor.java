@@ -88,7 +88,7 @@ public class AuthenticationInterceptor implements MethodInterceptor {
 		mount = StringUtils.replace(mount, "null", "");
 		/*if(subject == null || (subject != null && subject.equals("null"))) {
 			if((mountValue != null &&  mountValue.equals(PrincipalUtils.getOrganization().getId()))){
-				//企业文档下，普通用户只有查看权限
+				//工作文档下，普通用户只有查看权限
 				if(permissionId.equals(Permission.VIEW) || permissionId.equals(Permission.DOWNLOAD)){
 					//return ;
 					//管理员有所有权限

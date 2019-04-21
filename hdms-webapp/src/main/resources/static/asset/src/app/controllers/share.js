@@ -24,7 +24,7 @@ app.controller('ShareCtrl',
 
 		$scope.$on("$viewContentLoaded", function() {
 			//$scope.load();
-            $scope.error = "非常抱歉，社区版暂不支持该功能";
+            $scope.error = "非常抱歉，暂不支持该功能";
 		});
 } ]);
 

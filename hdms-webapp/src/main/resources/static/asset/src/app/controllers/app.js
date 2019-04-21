@@ -159,7 +159,7 @@ app.controller('AppCtrl', ['$rootScope', '$scope', 'toaster', 'FileSystem',
                 if ($rootScope.mountAlias === 'my') {
                     $rootScope.driectoryName = '个人文档';
                 } else {
-                    $rootScope.driectoryName = '企业文档';
+                    $rootScope.driectoryName = '工作文档';
                 }
             }
             $rootScope.current = current;

@@ -1,11 +1,11 @@
 package com.honvay.hdms.auth.web.deadline.filter;
 
-import com.honvay.hdms.auth.web.handler.WebAuthenticationFailureHandler;
+import com.honvay.hdms.framework.util.SpringContextUtils;
 import com.honvay.hdms.login.mapper.LoginLogMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.InsufficientAuthenticationException;
-import org.springframework.stereotype.Component;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.web.filter.GenericFilterBean;
 
 import javax.servlet.FilterChain;
@@ -17,28 +17,43 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
-@Component
 public class DeadlineFilter extends GenericFilterBean {
 
-    @Autowired
-    private LoginLogMapper loginLogMapper;
+    private Map<RequestMatcher, AuthenticationFailureHandler> requestMatcherMap = new HashMap<>();
 
-    @Autowired
-    private WebAuthenticationFailureHandler webAuthenticationFailureHandler;
+    public void addRequestMatcher(RequestMatcher requestMatcher, AuthenticationFailureHandler handler) {
+        this.requestMatcherMap.put(requestMatcher, handler);
+    }
 
-    @Value("${hdms.system.tryoutDay}")
-    private int tryoutDay;
+    private AuthenticationFailureHandler requiresAuthentication(HttpServletRequest request, HttpServletResponse response) {
+        for (RequestMatcher matcher : requestMatcherMap.keySet()) {
+            if (matcher.matches(request)) {
+                return requestMatcherMap.get(matcher);
+            }
+        }
+        return null;
+    }
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) {
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
+
+        AuthenticationFailureHandler authenticationFailureHandler = this.requiresAuthentication(request, response);
+        if (authenticationFailureHandler == null) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
+        LoginLogMapper loginLogMapper = SpringContextUtils.getBean(LoginLogMapper.class);
+        long tryoutDay = Long.parseLong(SpringContextUtils.getBean(Environment.class).getProperty("hdms.system.tryoutDay"));
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Date currentDate = sdf.parse(sdf.format(new Date()));
-            Map<String, Object> result = this.loginLogMapper.getLoginDate();
+            Map<String, Object> result = loginLogMapper.getLoginDate();
             if (result == null) {
                 filterChain.doFilter(request, response);
                 return;
@@ -46,11 +61,11 @@ public class DeadlineFilter extends GenericFilterBean {
             Date maxDate = sdf.parse(result.get("maxDate").toString());
             Date minDate = sdf.parse(result.get("minDate").toString());
             if (currentDate.getTime() < maxDate.getTime()) {
-                this.webAuthenticationFailureHandler.onAuthenticationFailure(request, response, new InsufficientAuthenticationException("试用期已失效！"));
+                authenticationFailureHandler.onAuthenticationFailure(request, response, new InsufficientAuthenticationException("试用期已失效！"));
                 return;
             }
             if (currentDate.getTime() - minDate.getTime() > tryoutDay * 24 * 60 * 60 * 1000) {
-                this.webAuthenticationFailureHandler.onAuthenticationFailure(request, response, new InsufficientAuthenticationException("试用期已失效！"));
+                authenticationFailureHandler.onAuthenticationFailure(request, response, new InsufficientAuthenticationException("试用期已失效！"));
                 return;
             }
             filterChain.doFilter(request, response);

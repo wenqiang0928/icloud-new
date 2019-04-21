@@ -7,7 +7,7 @@ spring:
     cache: false
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/hsdm?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    url: jdbc:mysql://132.232.107.41:3306/hsdm?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
     username: root
     password: 123456
     initialization-mode: always
@@ -20,6 +20,8 @@ spring:
 hdms:
   storage:
     location: D:/hdms
+  system:
+    tryoutDay: 90
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
   global-config:

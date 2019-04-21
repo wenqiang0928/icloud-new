@@ -12,9 +12,9 @@ public enum MountType {
 	MY("my", 1, "我的文档"),
 
 	/**
-	 * 企业文档
+	 * 工作文档
 	 */
-	ENTERPRISE("enterprise", 2, "企业文档");
+	ENTERPRISE("enterprise", 2, "工作文档");
 
 	MountType(String code, Integer value, String name) {
 		this.code = code;

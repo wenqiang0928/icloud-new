@@ -186,6 +186,7 @@ app.controller('FileDetailCtrl', ['$rootScope', '$scope', '$http', 'FileSystem',
         };
 
         $scope.setCurrent = function (file) {
+            debugger;
             $scope.current = file;
             $scope.current.media = $scope.getMediaType($scope.current);
             $scope.current.icon = $rootScope.getIcon($scope.current);
@@ -367,6 +368,60 @@ app.controller('FileMoveCtrl', [
             }, function () {
             });
         }
+        /**
+         * 修改案件号
+         */
+        // $scope.updateCaseNo = function () {
+        //     debugger;
+        //     $rootScope.updateCaseNo($scope.current, function () {
+        //     }, function () {
+        //     });
+        // }
+
+        // /**
+        //  * 修改警情编号
+        //  */
+        // $scope.updatePolicingNo = function () {
+        //     $rootScope.updatePolicingNo($scope.current, function () {
+        //     }, function () {
+        //     });
+        // }
+        //
+        // /**
+        //  * 修改案件名称
+        //  */
+        // $scope.updateCaseName = function () {
+        //     $rootScope.updateCaseName($scope.current, function () {
+        //     }, function () {
+        //     });
+        // }
+        //
+        // /**
+        //  * 修改案发时间
+        //  */
+        // $scope.updateCaseTime= function () {
+        //     $rootScope.updateCaseTime($scope.current, function () {
+        //     }, function () {
+        //     });
+        // }
+        //
+        // /**
+        //  * 修改案发地点
+        //  */
+        // $scope.updateCaseAddr = function () {
+        //     $rootScope.updateCaseAddr($scope.current, function () {
+        //     }, function () {
+        //     });
+        // }
+        //
+        // /**
+        //  * 修改案件详情
+        //  */
+        // $scope.updateCaseDesc = function () {
+        //     $rootScope.updateCaseDesc($scope.current, function () {
+        //     }, function () {
+        //     });
+        // }
 
         $scope.close = function () {
             $modalInstance.dismiss();

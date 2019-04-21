@@ -96,7 +96,7 @@ app.factory('WebUploader', ['$rootScope', 'FileSystem', function ($rootScope, Fi
                     file.path = $rootScope.current.name;
                 } else {
                     if ($rootScope.mountAlias === 'enterprise') {
-                        file.path = '企业文档';
+                        file.path = '工作文档';
                     } else {
                         file.path = '我的文档';
                     }

@@ -126,6 +126,41 @@ public interface DocumentWriteService {
 	 * @return
 	 */
 	Document updateCaseNo(UpdateCaseNoRequest request);
+	/**
+	 * 修改警情编号
+	 *
+	 * @param request
+	 * @return
+	 */
+	Document updatePolicingNo(UpdatePolicingNoRequest request);
+	/**
+	 * 修改案件名称
+	 *
+	 * @param request
+	 * @return
+	 */
+	Document updateCaseName(UpdateCaseNameRequest request);
+	/**
+	 * 修改案件时间
+	 *
+	 * @param request
+	 * @return
+	 */
+	Document updateCaseTime(UpdateCaseTimeRequest request);
+	/**
+	 * 修改案件地点
+	 *
+	 * @param request
+	 * @return
+	 */
+	Document updateCaseAddr(UpdateCaseAddrRequest request);
+	/**
+	 * 修改案件详情
+	 *
+	 * @param request
+	 * @return
+	 */
+	Document updateCaseDesc(UpdateCaseDescRequest request);
 
 	void setAuthorize(Integer documentId, Integer userId);
 

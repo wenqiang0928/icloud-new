@@ -97,7 +97,7 @@ public class ReadController extends BaseController {
 
 		//过滤权限
 		List<DocumentFullDto> documents = this.documentReadService.findFullDocument(id, mount);
-		//企业文档需要判断权限
+		//工作文档需要判断权限
 		if(!user.getRole().equals("ROLE_SYS_ADMIN")){
 
 			if (!user.getMountId().equals(mount)) {

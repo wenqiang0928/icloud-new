@@ -51,12 +51,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     private UserDetailsService userDetailsService;
 
     @Autowired
-    private DeadlineFilter deadlineFilter;
-
-    @Autowired
     private AuthenticationFailureHandler failureHandler;
 
     private CaptchaAuthenticationFilter captchaAuthenticationFilter = new CaptchaAuthenticationFilter();
+
+    private DeadlineFilter deadlineFilter = new DeadlineFilter();
 
     @Bean
     public AuthenticationSuccessHandler successHandler() {
@@ -81,10 +80,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        captchaAuthenticationFilter.addRequestMatcher(new AntPathRequestMatcher("/login", HttpMethod.POST.name()), this.failureHandler);
-
-        http.setSharedObject(CaptchaAuthenticationFilter.class, captchaAuthenticationFilter);
-//        http.addFilterBefore(this.deadlineFilter, UsernamePasswordAuthenticationFilter.class);
+        this.deadlineFilter.addRequestMatcher(new AntPathRequestMatcher("/login", HttpMethod.POST.name()), this.failureHandler);
+        this.captchaAuthenticationFilter.addRequestMatcher(new AntPathRequestMatcher("/login", HttpMethod.POST.name()), this.failureHandler);
+        http.setSharedObject(CaptchaAuthenticationFilter.class, this.captchaAuthenticationFilter);
+        http.setSharedObject(DeadlineFilter.class, this.deadlineFilter);
         http.authorizeRequests()
                 .antMatchers("/login", "/logout", "/error", "/fs/stream").permitAll()
                 .antMatchers("/captcha", "/session-invalid").permitAll()
@@ -102,7 +101,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/login?logout")
                 .invalidateHttpSession(false)
                 .and()
-                .addFilterBefore(captchaAuthenticationFilter, AbstractPreAuthenticatedProcessingFilter.class)
+                .addFilterBefore(this.deadlineFilter, AbstractPreAuthenticatedProcessingFilter.class)
+                .addFilterBefore(this.captchaAuthenticationFilter, AbstractPreAuthenticatedProcessingFilter.class)
                 .sessionManagement()
                 .invalidSessionUrl("/session-invalid")
                 .maximumSessions(1)

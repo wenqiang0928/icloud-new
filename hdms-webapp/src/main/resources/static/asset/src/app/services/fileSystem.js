@@ -156,6 +156,11 @@ app.factory('FileSystem', ['$http', '$q', function ($http, $q) {
         });
         return d.promise;
     }
+    /**
+     * 修改案件号
+     * @param file
+     * @returns {a}
+     */
     service.updateCaseNo = function (file) {
         var d = $q.defer();
         $http.post("/fs/updateCaseNo", {
@@ -172,6 +177,118 @@ app.factory('FileSystem', ['$http', '$q', function ($http, $q) {
         });
         return d.promise;
     }
+
+    /**
+     * 修改警情号
+     * @param file
+     * @returns {a}
+     */
+    service.updatePolicingNo = function (file) {
+        var d = $q.defer();
+        $http.post("/fs/updatePolicingNo", {
+            id: file.id,
+            policingNo: file.policingNo
+        }).success(function (result) {
+            if (result.success) {
+                d.resolve(result);
+            } else {
+                d.reject(result.message);
+            }
+        }).error(function (data, status) {
+            d.reject(status);
+        });
+        return d.promise;
+    }
+
+    /**
+     * 修改案发时间
+     * @param file
+     * @returns {a}
+     */
+    service.updateCaseTime = function (file) {
+        var d = $q.defer();
+        $http.post("/fs/updateCaseTime", {
+            id: file.id,
+            caseTime: file.caseTime
+        }).success(function (result) {
+            if (result.success) {
+                d.resolve(result);
+            } else {
+                d.reject(result.message);
+            }
+        }).error(function (data, status) {
+            d.reject(status);
+        });
+        return d.promise;
+    }
+    /**
+     * 修改案件名称
+     * @param file
+     * @returns {a}
+     */
+    service.updateCaseName = function (file) {
+        var d = $q.defer();
+        $http.post("/fs/updateCaseName", {
+            id: file.id,
+            caseName: file.caseName
+        }).success(function (result) {
+            if (result.success) {
+                d.resolve(result);
+            } else {
+                d.reject(result.message);
+            }
+        }).error(function (data, status) {
+            d.reject(status);
+        });
+        return d.promise;
+    }
+
+    /**
+     * 修改案件地址
+     * @param file
+     * @returns {a}
+     */
+    service.updateCaseAddr = function (file) {
+        var d = $q.defer();
+        $http.post("/fs/updateCaseAddr", {
+            id: file.id,
+            caseAddr: file.caseAddr
+        }).success(function (result) {
+            if (result.success) {
+                d.resolve(result);
+            } else {
+                d.reject(result.message);
+            }
+        }).error(function (data, status) {
+            d.reject(status);
+        });
+        return d.promise;
+    }
+
+
+    /**
+     * 修改案件详情
+     * @param file
+     * @returns {a}
+     */
+    service.updateCaseDesc = function (file) {
+        var d = $q.defer();
+        $http.post("/fs/updateCaseDesc", {
+            id: file.id,
+            caseDesc: file.caseDesc
+        }).success(function (result) {
+            if (result.success) {
+                d.resolve(result);
+            } else {
+                d.reject(result.message);
+            }
+        }).error(function (data, status) {
+            d.reject(status);
+        });
+        return d.promise;
+    }
+
+
 
     /**
      * 复制文件

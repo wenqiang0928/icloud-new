@@ -33,7 +33,7 @@ app.factory('FileOperation', ['$rootScope', 'FileSystem', '$modal', 'Messager', 
         };
 
         $rootScope.share = function (file) {
-            Messager.alert("提示", "非常抱歉，社区版暂不支持该功能");
+            Messager.alert("提示", "非常抱歉，暂不支持该功能");
         };
 
         $rootScope.sendFile = function (files) {
@@ -285,6 +285,7 @@ app.factory('FileOperation', ['$rootScope', 'FileSystem', '$modal', 'Messager', 
                 }
             });
         }
+
         $rootScope.updateCaseNo = function (file, success, error) {
             var toast = $scope.toaster.wait({
                 title: '正在修改案件编号...'
@@ -307,13 +308,127 @@ app.factory('FileOperation', ['$rootScope', 'FileSystem', '$modal', 'Messager', 
             });
         }
 
+
+        $rootScope.updateCaseName = function (file, success, error) {
+            var toast = $scope.toaster.wait({
+                title: '正在修改案件编号...'
+            });
+            FileSystem.updateCaseName(file).then(function (result) {
+                toast.doSuccess({
+                    title: "修改成功"
+                });
+                if (angular.isFunction(success)) {
+                    success(result, name);
+                }
+            }, function (cause) {
+                toast.doError({
+                    title: "修改失败",
+                    body: cause
+                });
+                if (angular.isFunction(error)) {
+                    error(cause);
+                }
+            });
+        }
+
+        $rootScope.updateCaseTime = function (file, success, error) {
+            var toast = $scope.toaster.wait({
+                title: '正在修改案件编号...'
+            });
+            FileSystem.updateCaseTime(file).then(function (result) {
+                toast.doSuccess({
+                    title: "修改成功"
+                });
+                if (angular.isFunction(success)) {
+                    success(result, name);
+                }
+            }, function (cause) {
+                toast.doError({
+                    title: "修改失败",
+                    body: cause
+                });
+                if (angular.isFunction(error)) {
+                    error(cause);
+                }
+            });
+        }
+
+
+        $rootScope.updateCaseAddr = function (file, success, error) {
+            var toast = $scope.toaster.wait({
+                title: '正在修改案件编号...'
+            });
+            FileSystem.updateCaseAddr(file).then(function (result) {
+                toast.doSuccess({
+                    title: "修改成功"
+                });
+                if (angular.isFunction(success)) {
+                    success(result, name);
+                }
+            }, function (cause) {
+                toast.doError({
+                    title: "修改失败",
+                    body: cause
+                });
+                if (angular.isFunction(error)) {
+                    error(cause);
+                }
+            });
+        }
+
+        $rootScope.updateCaseDesc = function (file, success, error) {
+            var toast = $scope.toaster.wait({
+                title: '正在修改案件编号...'
+            });
+            FileSystem.updateCaseDesc(file).then(function (result) {
+                toast.doSuccess({
+                    title: "修改成功"
+                });
+                if (angular.isFunction(success)) {
+                    success(result, name);
+                }
+            }, function (cause) {
+                toast.doError({
+                    title: "修改失败",
+                    body: cause
+                });
+                if (angular.isFunction(error)) {
+                    error(cause);
+                }
+            });
+        }
+
+        $rootScope.updatePolicingNo = function (file, success, error) {
+            var toast = $scope.toaster.wait({
+                title: '正在修改案件编号...'
+            });
+            FileSystem.updatePolicingNo(file).then(function (result) {
+                toast.doSuccess({
+                    title: "修改成功"
+                });
+                if (angular.isFunction(success)) {
+                    success(result, name);
+                }
+            }, function (cause) {
+                toast.doError({
+                    title: "修改失败",
+                    body: cause
+                });
+                if (angular.isFunction(error)) {
+                    error(cause);
+                }
+            });
+        }
+
+
+
         $rootScope.download = function (file) {
             $scope.downloadURL = "/fs/download?id=" + file.id;
         };
 
         //上传新版本
         $rootScope.uploadNewVersion = function (file) {
-            Messager.alert("提示", "非常抱歉，社区版不支持文档多版本")
+            Messager.alert("提示", "非常抱歉，不支持文档多版本")
         };
     }
     return service;

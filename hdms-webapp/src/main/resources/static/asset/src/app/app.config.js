@@ -35,7 +35,9 @@ app.run(['$rootScope', '$state', '$stateParams', '$http', 'Messager',
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
         function ($stateProvider, $urlRouterProvider, $locationProvider) {
             $locationProvider.html5Mode(true);
+            //todo by wxq
             $urlRouterProvider.otherwise('/index/directory/enterprise');
+            // $urlRouterProvider.otherwise('/index/directory/my');
             //路由配置
             $urlRouterProvider.when('/index/document/{document}', ['$state', '$match', '$rootScope', function ($state, $match, $rootScope) {
                 $rootScope.fid = $match.document;
