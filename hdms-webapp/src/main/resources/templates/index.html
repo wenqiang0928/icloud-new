@@ -11,22 +11,22 @@
     <link rel="shortcut icon" href="/asset/img/jinhui.jpg" media="screen"/>
 </head>
 <body ng-controller="AppCtrl">
-<div class="bg-primary preload text-white text-center" ng-hide="started">
-    <img src="/asset/img/jinhui.jpg"/>
-    <h2 class="inline">资料管理平台</h2>
-    <div class="progress-xs m-t-sm dker progress w">
-        <div id="progress" class="progress-bar progress-bar-white" style="width: 0%;"></div>
-    </div>
-</div>
+<!--<div class="bg-primary preload text-white text-center" ng-hide="started">-->
+<!--    <img src="/asset/img/jinhui.jpg"/>-->
+<!--    <h2 class="inline">资料管理平台</h2>-->
+<!--    <div class="progress-xs m-t-sm dker progress w">-->
+<!--        <div id="progress" class="progress-bar progress-bar-white" style="width: 0%;"></div>-->
+<!--    </div>-->
+<!--</div>-->
 <script>
-    var precent = 0;
-
-    function progress() {
-        precent = precent >= 90 ? 0 : precent + 10;
-        document.getElementById("progress").style.width = precent + "%";
-    }
-
-    var preloadInterval = window.setInterval(progress, 500);
+    // var precent = 0;
+    //
+    // function progress() {
+    //     precent = precent >= 90 ? 0 : precent + 10;
+    //     document.getElementById("progress").style.width = precent + "%";
+    // }
+    //
+    // var preloadInterval = window.setInterval(progress, 500);
 </script>
 <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
 <input id="uploadFile" type="file" multiple="multiple" class="hidden"
@@ -41,6 +41,47 @@
                     <span class="app-name">资料管理平台</span>
                 </a>
             </div>
+            <div class="navbar-right wrapper-sm " id="aside-user">
+                <div class="dropdown wrapper" dropdown style="padding: 0px">
+                    <a dropdown-toggle>
+				          <span class="thumb-lg w-auto-folded avatar m-t-sm" style="width: auto">
+				            <img ng-src='{{user.avatar | resource}}' class="img-full avatar-img" alt="...">
+				          </span>
+                        <b class="caret"></b>
+                    </a>
+
+                    <ul class="dropdown-menu animated fadeInRight w hidden-folded">
+                        <li class="wrapper b-b m-b-sm bg-primary m-t-n-xs">
+                            <div>
+                                <p style="font-size:12px;">共{{space.quota | formatSize }}，已使用{{space.used | formatSize
+                                    }}</p>
+                            </div>
+                            <progressbar value="space.quatoPrecent" type="white"
+                                         class="progress-xs m-b-none dker"></progressbar>
+                        </li>
+                        <li>
+                            <strong class="font-bold" ng-bind="user.name"></strong>
+                            <span class="text-xs block" ng-bind="user.department.name"></span>
+                        </li>
+                        <li>
+                            <a ui-sref="profile">个人设置</a>
+                        </li>
+                        <li>
+                            <a ui-sref="changePassword">修改密码</a>
+                        </li>
+                        <li ng-show="user.role == 'ROLE_SYS_ADMIN'">
+                            <a href="/dashboard" target="_self">进入控制台</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="/logout" target="_self">退出登录</a>
+                        </li>
+                    </ul>
+                    <!-- / dropdown -->
+                </div>
+                <!--                <div class="line dk hidden-folded"></div>-->
+            </div>
+
             <div class="navbar-right wrapper-sm">
                 <form class="navbar-form navbar-form-sm no-padder" style="margin: 0px;">
                     <div class="form-group">
@@ -56,6 +97,10 @@
                     </div>
                 </form>
             </div>
+
+
+
+
             <ul class="nav navbar-nav navbar-right ">
                 <li ng-click="showQueue = !showQueue">
                     <a href class="" tooltip="上传队列" tooltip-placement="bottom">
@@ -64,71 +109,71 @@
                               ng-bind="uploadStats.progressNum"></span>
                     </a>
                 </li>
-                <li ui-sref-active="active">
-                    <a ui-sref='messages' class="auto" tooltip="消息提醒" tooltip-placement="bottom">
-                        <i class="glyphicon glyphicon-comment "></i>
-                    </a>
-                </li>
+                <!--                <li ui-sref-active="active">-->
+                <!--                    <a ui-sref='messages' class="auto" tooltip="消息提醒" tooltip-placement="bottom">-->
+                <!--                        <i class="glyphicon glyphicon-comment "></i>-->
+                <!--                    </a>-->
+                <!--                </li>-->
             </ul>
         </div>
     </div>
     <div class="app-aside bg-primay-light lter b-r h-full">
         <!-- user -->
-        <div class="clearfix text-center " id="aside-user">
-            <div class="dropdown wrapper" dropdown>
-                <a>
-				          <span class="thumb-lg w-auto-folded avatar m-t-sm">
-				            <img ng-src='{{user.avatar | resource}}' class="img-full avatar-img" alt="...">
-				          </span>
-                </a>
-                <a href class="dropdown-toggle hidden-folded" dropdown-toggle>
-				          <span class="clear">
-				            <span class="block m-t-sm">
-				              <strong class="font-bold" ng-bind="user.name"></strong> 
-				              <b class="caret"></b> 
-				            </span>
-				            <span class="text-xs block" ng-bind="user.department.name"></span>
-				          </span>
-                </a>
-                <!-- dropdown -->
-                <ul class="dropdown-menu animated fadeInRight w hidden-folded">
-                    <li class="wrapper b-b m-b-sm bg-primary m-t-n-xs">
-                        <span class="arrow top hidden-folded arrow-primary"></span>
-                        <div>
-                            <p style="font-size:12px;">共{{space.quota | formatSize }}，已使用{{space.used | formatSize
-                                }}</p>
-                        </div>
-                        <progressbar value="space.quatoPrecent" type="white"
-                                     class="progress-xs m-b-none dker"></progressbar>
-                    </li>
-                    <li>
-                        <a ui-sref="profile">个人设置</a>
-                    </li>
-                    <li>
-                        <a ui-sref="changePassword">修改密码</a>
-                    </li>
-                    <li ng-show="user.role == 'ROLE_SYS_ADMIN'">
-                        <a href="/dashboard" target="_self">进入控制台</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="/logout" target="_self">退出登录</a>
-                    </li>
-                </ul>
-                <!-- / dropdown -->
-            </div>
-            <div class="line dk hidden-folded"></div>
-        </div>
+        <!--        <div class="clearfix text-center " id="aside-user">-->
+        <!--            <div class="dropdown wrapper" dropdown>-->
+        <!--                <a>-->
+        <!--				          <span class="thumb-lg w-auto-folded avatar m-t-sm">-->
+        <!--				            <img ng-src='{{user.avatar | resource}}' class="img-full avatar-img" alt="...">-->
+        <!--				          </span>-->
+        <!--                </a>-->
+        <!--                <a href class="dropdown-toggle hidden-folded" dropdown-toggle>-->
+        <!--				          <span class="clear">-->
+        <!--				            <span class="block m-t-sm">-->
+        <!--				              <strong class="font-bold" ng-bind="user.name"></strong> -->
+        <!--				              <b class="caret"></b> -->
+        <!--				            </span>-->
+        <!--				            <span class="text-xs block" ng-bind="user.department.name"></span>-->
+        <!--				          </span>-->
+        <!--                </a>-->
+        <!--                &lt;!&ndash; dropdown &ndash;&gt;-->
+        <!--                <ul class="dropdown-menu animated fadeInRight w hidden-folded">-->
+        <!--                    <li class="wrapper b-b m-b-sm bg-primary m-t-n-xs">-->
+        <!--                        <span class="arrow top hidden-folded arrow-primary"></span>-->
+        <!--                        <div>-->
+        <!--                            <p style="font-size:12px;">共{{space.quota | formatSize }}，已使用{{space.used | formatSize-->
+        <!--                                }}</p>-->
+        <!--                        </div>-->
+        <!--                        <progressbar value="space.quatoPrecent" type="white"-->
+        <!--                                     class="progress-xs m-b-none dker"></progressbar>-->
+        <!--                    </li>-->
+        <!--                    <li>-->
+        <!--                        <a ui-sref="profile">个人设置</a>-->
+        <!--                    </li>-->
+        <!--                    <li>-->
+        <!--                        <a ui-sref="changePassword">修改密码</a>-->
+        <!--                    </li>-->
+        <!--                    <li ng-show="user.role == 'ROLE_SYS_ADMIN'">-->
+        <!--                        <a href="/dashboard" target="_self">进入控制台</a>-->
+        <!--                    </li>-->
+        <!--                    <li class="divider"></li>-->
+        <!--                    <li>-->
+        <!--                        <a href="/logout" target="_self">退出登录</a>-->
+        <!--                    </li>-->
+        <!--                </ul>-->
+        <!--                &lt;!&ndash; / dropdown &ndash;&gt;-->
+        <!--            </div>-->
+        <!--            <div class="line dk hidden-folded"></div>-->
+        <!--        </div>-->
         <!-- / user -->
 
         <!-- nav -->
-        <nav ui-nav class="navi">
+        <nav ui-nav class="navi" style="margin-top: 50px">
             <ul class="nav">
                 <!--  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                    <span>网盘</span>
                  </li> -->
                 <li ui-sref-active="active" ng-class="{'active':mountAlias == 'enterprise'}">
-                    <a ui-sref='directory({directory:"enterprise"})'>
+                    <a ui-sref='directory({directory:"enterprise"})' style="background-color:inherit;color: black ">
                         <i class="fa fa-users  "></i>
                         <span>工作文档</span>
                     </a>
@@ -146,12 +191,12 @@
                   </a>
                 </li>  -->
                 <li class="line dk"></li>
-<!--                <li ui-sref-active="active">-->
-<!--                    <a ui-sref='share' class="auto">-->
-<!--                        <i class="fa fa-share-alt "></i>-->
-<!--                        <span>我的分享</span>-->
-<!--                    </a>-->
-<!--                </li>-->
+                <!--                <li ui-sref-active="active">-->
+                <!--                    <a ui-sref='share' class="auto">-->
+                <!--                        <i class="fa fa-share-alt "></i>-->
+                <!--                        <span>我的分享</span>-->
+                <!--                    </a>-->
+                <!--                </li>-->
                 <li ui-sref-active="active">
                     <a ui-sref='recent' class="auto">
                         <i class="fa fa-clock-o"></i>
