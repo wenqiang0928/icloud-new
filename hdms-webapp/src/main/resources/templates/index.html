@@ -44,7 +44,7 @@
             <div class="navbar-right wrapper-sm " id="aside-user">
                 <div class="dropdown wrapper" dropdown style="padding: 0px">
                     <a dropdown-toggle>
-				          <span class="thumb-lg w-auto-folded avatar m-t-sm" style="width: auto">
+				          <span class="thumb-lg w-auto-folded avatar m-t-sm" style="width: auto;margin-top: 5px;">
 				            <img ng-src='{{user.avatar | resource}}' class="img-full avatar-img" alt="...">
 				          </span>
                         <b class="caret"></b>
@@ -59,9 +59,13 @@
                             <progressbar value="space.quatoPrecent" type="white"
                                          class="progress-xs m-b-none dker"></progressbar>
                         </li>
+                        <li style="margin-bottom: 5px">
+                            <strong class="font-bold"  style="margin-left: 27px;" ng-bind="user.name"></strong>
+
+                        </li>
                         <li>
-                            <strong class="font-bold" ng-bind="user.name"></strong>
-                            <span class="text-xs block" ng-bind="user.department.name"></span>
+                            <span class="text-xs block" style="margin-left: 27px;font-size: 14px" ng-bind="user.department.name"></span>
+                            <hr style="margin: 10px"/>
                         </li>
                         <li>
                             <a ui-sref="profile">个人设置</a>

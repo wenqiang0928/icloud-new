@@ -135,7 +135,7 @@
                         </div>
                     </div>
                 </tab>
-                <tab>
+                <tab ng-show="false">
                     <tab-heading>
                         评论({{reviews.length}})
                     </tab-heading>
@@ -176,7 +176,7 @@
 <!--                        <div>社区版不支持多版本</div>-->
 <!--                    </div>-->
 <!--                </tab>-->
-                <tab>
+                <tab ng-show="false">
                     <tab-heading>动态({{activities.length}})</tab-heading>
                     <div class="text-center" ng-if="activities.length == 0 || !activities">
                         <i class="iconfont icon-empty" style="font-size: 90pt"></i>

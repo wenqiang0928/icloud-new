@@ -222,7 +222,7 @@
                     <td ng-click="select(file,null,$event)">
                         <img ng-if="file.creationBy" ng-src="{{file.creationBy.avatar | resource}}"
                              class="img-circle"
-                             style="height:30px;float:left;" alt="...">
+                             style="height:30px;float:left;display: none;" alt="...">
                         <span class="m-l-xs">{{file.creationBy.name}}</span>
                     </td>
                     <td ng-click="select(file,null,$event)">{{file.updateDate}}</td>
@@ -275,7 +275,7 @@
              style="overflow: auto;">
             <tabset justified="true" class="tab-container file-tab h-full">
                 <tab heading="详情">
-                    <div class="wrapper-sm text-center b-b">
+                    <div class="wrapper-sm text-center b-b" ng-show="false">
                         <img ng-src="{{getIcon(current)}}" style="max-height:80px"/>
                         <p class="m-t-xs font-bold m-b-none" style="word-break:break-all;">{{current.name}}</p>
                         <div class=" text-2x m-t-sm">
@@ -293,13 +293,13 @@
                         </div>
                     </div>
                     <div class="wrapper-sm clearfix" style="line-height: 30px;">
-                        <div class="col-sm-3  font-bold no-padder text-right m-t-xs">创建者:</div>
+                        <div class="col-sm-3  font-bold no-padder text-right m-t-xs" style="text-align: center;">创建者:</div>
                         <div class="col-sm-9 m-t-xs">
                             <img ng-src="{{current.creationBy.avatar | resource}}" class="img-circle"
-                                 style="height:30px;float:left;" alt="...">
-                            <span class="m-l-xs">{{current.creationBy.name}}</span>
+                                 style="height:30px;float:left;display: none;" alt="...">
+                            <span class="m-l-xs" style="margin-left: 0;">{{current.creationBy.name}}</span>
                         </div>
-                        <div class="col-sm-3 font-bold no-padder text-right m-t-xs">创建时间:</div>
+                        <div class="col-sm-3 font-bold no-padder text-right m-t-xs" style="text-align: center;">创建时间:</div>
                         <div class="col-sm-9 m-t-xs">{{current.createDate}}</div>
                         <div class="col-sm-12 m-t-xs">
                             <div class="i-tag" style="line-height:1.42857143;"
@@ -330,8 +330,8 @@
                         <!--                        </div>-->
 
 
-                        <div class="col-sm-4 font-bold no-padder text-right m-t-xs">案件编号：</div>
-                        <div class="col-sm-8 m-t-xs hover-container" ng-if="checkPermission('edit')">
+                        <div class="col-sm-3 font-bold no-padder text-right m-t-xs">案件编号：</div>
+                        <div class="col-sm-9 m-t-xs hover-container" ng-if="checkPermission('edit')">
                                                     <span class="hover" tooltip="点击编辑案件编号"
                                                           ng-show="!caseNoEditing && current.caseNo"
                                                           ng-click="caseNoEditing=true">
@@ -343,14 +343,14 @@
                                                     </span>
                             <input ng-show="caseNoEditing" ng-model="current.caseNo" ng-blur="updateCaseNo();caseNoEditing=false;" class="form-control m-t-xs"/>
                         </div>
-                        <div class="col-sm-8 m-t-xs hover-container" ng-if="!checkPermission('edit')">
+                        <div class="col-sm-9 m-t-xs hover-container" ng-if="!checkPermission('edit')">
                             <span ng-show="current.caseNo">{{current.caseNo}}</span>
                             <span class="text-muted" ng-show="!current.caseNo">没有案件编号</span>
                         </div>
 
 
-                        <div class="col-sm-4 font-bold no-padder text-right m-t-xs">警情编号：</div>
-                        <div class="col-sm-8 m-t-xs hover-container" ng-if="checkPermission('edit')">
+                        <div class="col-sm-3 font-bold no-padder text-right m-t-xs">警情编号：</div>
+                        <div class="col-sm-9 m-t-xs hover-container" ng-if="checkPermission('edit')">
                                                     <span class="hover" tooltip="点击编辑警情编号"
                                                           ng-show="!policingNoEditing && current.policingNo"
                                                           ng-click="policingNoEditing=true">
@@ -362,14 +362,14 @@
                                                     </span>
                             <input ng-show="policingNoEditing" ng-model="current.policingNo" ng-blur="updatePolicingNo();policingNoEditing=false;" class="form-control m-t-xs"/>
                         </div>
-                        <div class="col-sm-8 m-t-xs hover-container" ng-if="!checkPermission('edit')">
+                        <div class="col-sm-9 m-t-xs hover-container" ng-if="!checkPermission('edit')">
                             <span ng-show="current.policingNo">{{current.policingNo}}</span>
                             <span class="text-muted" ng-show="!current.policingNo">没有警情编号</span>
                         </div>
 
 
-                        <div class="col-sm-4 font-bold no-padder text-right m-t-xs">案件名称：</div>
-                        <div class="col-sm-8 m-t-xs hover-container" ng-if="checkPermission('edit')">
+                        <div class="col-sm-3 font-bold no-padder text-right m-t-xs">案件名称：</div>
+                        <div class="col-sm-9 m-t-xs hover-container" ng-if="checkPermission('edit')">
                                                     <span class="hover" tooltip="点击编辑案件名称"
                                                           ng-show="!caseNameEditing && current.caseName"
                                                           ng-click="caseNameEditing=true">
@@ -381,14 +381,14 @@
                                                     </span>
                             <input ng-show="caseNameEditing" ng-model="current.caseName" ng-blur="updateCaseName();caseNameEditing=false;" class="form-control m-t-xs"/>
                         </div>
-                        <div class="col-sm-8 m-t-xs hover-container" ng-if="!checkPermission('edit')">
+                        <div class="col-sm-9 m-t-xs hover-container" ng-if="!checkPermission('edit')">
                             <span ng-show="current.caseName">{{current.caseName}}</span>
                             <span class="text-muted" ng-show="!current.caseName">没有案件名称</span>
                         </div>
 
 
-                        <div class="col-sm-4 font-bold no-padder text-right m-t-xs">案发时间：</div>
-                        <div class="col-sm-8 m-t-xs hover-container" ng-if="checkPermission('edit')">
+                        <div class="col-sm-3 font-bold no-padder text-right m-t-xs">案发时间：</div>
+                        <div class="col-sm-9 m-t-xs hover-container" ng-if="checkPermission('edit')">
                                                     <span class="hover" tooltip="点击编辑案发时间"
                                                           ng-show="!caseTimeEditing && current.caseTime"
                                                           ng-click="caseTimeEditing=true">
@@ -400,14 +400,14 @@
                                                     </span>
                             <input ng-show="caseTimeEditing" ng-model="current.caseTime" ng-blur="updateCaseTime();caseTimeEditing=false;" class="form-control m-t-xs"/>
                         </div>
-                        <div class="col-sm-8 m-t-xs hover-container" ng-if="!checkPermission('edit')">
+                        <div class="col-sm-9 m-t-xs hover-container" ng-if="!checkPermission('edit')">
                             <span ng-show="current.caseTime">{{current.caseTime}}</span>
                             <span class="text-muted" ng-show="!current.caseTime">没有案发时间</span>
                         </div>
 
 
-                        <div class="col-sm-4 font-bold no-padder text-right m-t-xs">案发地点：</div>
-                        <div class="col-sm-8 m-t-xs hover-container" ng-if="checkPermission('edit')">
+                        <div class="col-sm-3 font-bold no-padder text-right m-t-xs">案发地点：</div>
+                        <div class="col-sm-9 m-t-xs hover-container" ng-if="checkPermission('edit')">
                                                     <span class="hover" tooltip="点击编辑案发地点"
                                                           ng-show="!caseAddrEditing && current.caseAddr"
                                                           ng-click="caseAddrEditing=true">
@@ -419,14 +419,14 @@
                                                     </span>
                             <input ng-show="caseAddrEditing" ng-model="current.caseAddr" ng-blur="updateCaseAddr();caseAddrEditing=false;" class="form-control m-t-xs"/>
                         </div>
-                        <div class="col-sm-8 m-t-xs hover-container" ng-if="!checkPermission('edit')">
+                        <div class="col-sm-9 m-t-xs hover-container" ng-if="!checkPermission('edit')">
                             <span ng-show="current.caseAddr">{{current.caseAddr}}</span>
                             <span class="text-muted" ng-show="!current.caseAddr">没有案发地点</span>
                         </div>
 
 
-                        <div class="col-sm-4 font-bold no-padder text-right m-t-xs">案件详情：</div>
-                        <div class="col-sm-8 m-t-xs hover-container" ng-if="checkPermission('edit')">
+                        <div class="col-sm-3 font-bold no-padder text-right m-t-xs">案件详情：</div>
+                        <div class="col-sm-9 m-t-xs hover-container" ng-if="checkPermission('edit')">
                                                     <span class="hover" tooltip="点击编辑案件详情"
                                                           ng-show="!caseDescEditing && current.caseDesc"
                                                           ng-click="caseDescEditing=true">
@@ -441,7 +441,7 @@
                                       rows="5"></textarea>
 
                         </div>
-                        <div class="col-sm-8 m-t-xs hover-container" ng-if="!checkPermission('edit')">
+                        <div class="col-sm-9 m-t-xs hover-container" ng-if="!checkPermission('edit')">
                             <span ng-show="current.caseDesc">{{current.caseDesc}}</span>
                             <span class="text-muted" ng-show="!current.caseDesc">没有案件详情</span>
                         </div>
@@ -514,7 +514,7 @@
                         </div>
                     </div>
                 </tab>
-                <tab class="h-full">
+                <tab class="h-full" ng-show="false">
                     <tab-heading>动态({{activities.length}})</tab-heading>
                     <div class="text-center" ng-if="activities.length == 0 || !activities">
                         <i class="iconfont icon-empty" style="font-size: 90pt"></i>
